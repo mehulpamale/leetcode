@@ -355,6 +355,17 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="/var/folders/_j/b7_nbkpj34jbvlxwb98mzj940000gn/T/leetcode/editor/en/[557]Reverse Words in a String III.py">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="/var/folders/_j/b7_nbkpj34jbvlxwb98mzj940000gn/T/leetcode/editor/en/doc/content/[557]Reverse Words in a String III.md" />
+              <option name="frontendQuestionId" value="leetcode.com557" />
+              <option name="host" value="leetcode.com" />
+              <option name="path" value="/var/folders/_j/b7_nbkpj34jbvlxwb98mzj940000gn/T/leetcode/editor/en/[557]Reverse Words in a String III.py" />
+              <option name="titleSlug" value="reverse-words-in-a-string-iii" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="/var/folders/_j/b7_nbkpj34jbvlxwb98mzj940000gn/T/leetcode/editor/en/[643]Maximum Average Subarray I.py">
           <value>
             <LeetcodeEditor>
@@ -388,6 +399,17 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="/var/folders/_j/b7_nbkpj34jbvlxwb98mzj940000gn/T/leetcode/editor/en/[706]Design HashMap.py">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="/var/folders/_j/b7_nbkpj34jbvlxwb98mzj940000gn/T/leetcode/editor/en/doc/content/[706]Design HashMap.md" />
+              <option name="frontendQuestionId" value="leetcode.com706" />
+              <option name="host" value="leetcode.com" />
+              <option name="path" value="/var/folders/_j/b7_nbkpj34jbvlxwb98mzj940000gn/T/leetcode/editor/en/[706]Design HashMap.py" />
+              <option name="titleSlug" value="design-hashmap" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="/var/folders/_j/b7_nbkpj34jbvlxwb98mzj940000gn/T/leetcode/editor/en/[724]Find Pivot Index.py">
           <value>
             <LeetcodeEditor>
@@ -410,6 +432,17 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="/var/folders/_j/b7_nbkpj34jbvlxwb98mzj940000gn/T/leetcode/editor/en/[739]Daily Temperatures.py">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="/var/folders/_j/b7_nbkpj34jbvlxwb98mzj940000gn/T/leetcode/editor/en/doc/content/[739]Daily Temperatures.md" />
+              <option name="frontendQuestionId" value="leetcode.com739" />
+              <option name="host" value="leetcode.com" />
+              <option name="path" value="/var/folders/_j/b7_nbkpj34jbvlxwb98mzj940000gn/T/leetcode/editor/en/[739]Daily Temperatures.py" />
+              <option name="titleSlug" value="daily-temperatures" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="/var/folders/_j/b7_nbkpj34jbvlxwb98mzj940000gn/T/leetcode/editor/en/[75]Sort Colors.py">
           <value>
             <LeetcodeEditor>
@@ -429,6 +462,17 @@
               <option name="host" value="leetcode.com" />
               <option name="path" value="/var/folders/_j/b7_nbkpj34jbvlxwb98mzj940000gn/T/leetcode/editor/en/[872]Leaf-Similar Trees.py" />
               <option name="titleSlug" value="leaf-similar-trees" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="/var/folders/_j/b7_nbkpj34jbvlxwb98mzj940000gn/T/leetcode/editor/en/[901]Online Stock Span.py">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="/var/folders/_j/b7_nbkpj34jbvlxwb98mzj940000gn/T/leetcode/editor/en/doc/content/[901]Online Stock Span.md" />
+              <option name="frontendQuestionId" value="leetcode.com901" />
+              <option name="host" value="leetcode.com" />
+              <option name="path" value="/var/folders/_j/b7_nbkpj34jbvlxwb98mzj940000gn/T/leetcode/editor/en/[901]Online Stock Span.py" />
+              <option name="titleSlug" value="online-stock-span" />
             </LeetcodeEditor>
           </value>
         </entry>
