@@ -1,61 +1,108 @@
-class StockSpanner(object):
+# leetcode submit region begin(Prohibit modification and deletion)
+class ListNode:
+    def __init__(self, key=None, val=None, next=None):
+        self.key = key
+        self.val = val
+        self.next = next
+
+
+class LinkedList:
+    def __init__(self):
+        self.start = None
+        self.head = None
+
+    def get(self, key):
+        mhead = self.start
+        while mhead:
+            if mhead.key == key:
+                return mhead.val
+            mhead = mhead.next
+
+    def _append(self, key, val):
+        node = ListNode(key, val)
+        if self.head:
+            self.head.next = node
+            self.head = self.head.next
+        else:
+            self.head = node
+            self.start = self.head
+
+    def put(self, key, val):
+        mhead = self.start
+        while mhead:
+            if mhead.key == key:
+                mhead.val = val
+                return
+            mhead = mhead.next
+        self._append(key, val)
+
+    def remove(self, key):
+        if not self.head:
+            return
+        mhead = self.start
+        while mhead and mhead.next:
+            if mhead.next.key == key:
+                to_remove = mhead.next
+                mhead.next = mhead.next.next
+                to_remove.next = None
+            mhead = mhead.next
+        if mhead.key == key:
+            self.head = None
+            self.start = None
+
+
+class MyHashMap(object):
+    size = 10
 
     def __init__(self):
-        self.prices = []
-        self.stack = []
+        self.ls = [LinkedList() for i in range(0, self.size)]
 
-    def next(self, price):
+    def hash(self, key):
+        return key % self.size
+
+    def put(self, key, value):
         """
-        :type price: int
+        :type key: int
+        :type value: int
+        :rtype: None
+        """
+        hc = self.hash(key)
+        self.ls[hc].put(key, value)
+
+    def get(self, key):
+        """
+        :type key: int
         :rtype: int
         """
-        prices = self.prices
-        stack = self.stack
-        prices.append(price)
-        idx = len(prices) - 1
-        while stack and prices[stack[-1]] <= price:
-            stack.pop()
-        prev_index = stack[-1] if stack else 0
-        stack.append(idx)
-        return idx - prev_index
+        hc = self.hash(key)
+        res = self.ls[hc].get(key)
+        return res if res is not None else -1
 
-    # input2 = [[1, 2], [2, 3], [3, 4], [1, 3]]
+    def remove(self, key):
+        """
+        :type key: int
+        :rtype: None
+        """
+        hc = self.hash(key)
+        self.ls[hc].remove(key)
 
 
-# input2 = [[1, 2], [1, 2], [1, 2]]
-# input2 = [[1, 100], [11, 22], [1, 11], [2, 12]]
-# input2 = [[-52, 31], [-73, -26], [82, 97], [-65, -11], [-62, -49], [95, 99], [58, 95], [-31, 49], [66, 98], [-63, 2],
-#           [30, 47], [-40, -26]]
-# input2 = [[0, 2], [1, 3], [2, 4], [3, 5], [4, 6]]
-# input2 = 'God Ding'
-s = StockSpanner()
+# Your MyHashMap object will be instantiated and called as such:
+# obj = MyHashMap()
+# obj.put(key,value)
+# param_2 = obj.get(key)
+# obj.remove(key)
+# leetcode submit region end(Prohibit modification and deletion)
 
-output = s.next(100)
-print(output)
-output = s.next(80)
-print(output)
-output = s.next(60)
-print(output)
-output = s.next(70)
-print(output)
-output = s.next(60)
-print(output)
-output = s.next(75)
-print(output)
-output = s.next(85)
-print(output)
-
-# output = s.next(1)
-# print(output)
-# output = s.next(2)
-# print(output)
-# output = s.next(3)
-# print(output)
-# output = s.next(4)
-# print(output)
-# output = s.next(5)
-# print(output)
-# output = s.next(6)
-# print(output)
-# output = s.next(7)
-# print(output)
+mymap = MyHashMap()
+mymap.put(1, 2)
+# mymap.put(11, 2)
+mymap.put(2, 3)
+# mymap.put(3, 1)
+# print(mymap)
+# mymap.put(2, 6)
+# print(mymap)
+# mymap.put(2, 4)
+mymap.remove(27)
+mymap.put(16, 53)
+print(mymap.get(16))
