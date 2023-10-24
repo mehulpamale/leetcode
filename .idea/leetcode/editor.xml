@@ -58,6 +58,17 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="/var/folders/_j/b7_nbkpj34jbvlxwb98mzj940000gn/T/leetcode/editor/en/[125]Valid Palindrome.py">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="/var/folders/_j/b7_nbkpj34jbvlxwb98mzj940000gn/T/leetcode/editor/en/doc/content/[125]Valid Palindrome.md" />
+              <option name="frontendQuestionId" value="leetcode.com125" />
+              <option name="host" value="leetcode.com" />
+              <option name="path" value="/var/folders/_j/b7_nbkpj34jbvlxwb98mzj940000gn/T/leetcode/editor/en/[125]Valid Palindrome.py" />
+              <option name="titleSlug" value="valid-palindrome" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="/var/folders/_j/b7_nbkpj34jbvlxwb98mzj940000gn/T/leetcode/editor/en/[1318]Minimum Flips to Make a OR b Equal to c.py">
           <value>
             <LeetcodeEditor>
@@ -374,6 +385,17 @@
               <option name="host" value="leetcode.com" />
               <option name="path" value="/var/folders/_j/b7_nbkpj34jbvlxwb98mzj940000gn/T/leetcode/editor/en/[450]Delete Node in a BST.py" />
               <option name="titleSlug" value="delete-node-in-a-bst" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="/var/folders/_j/b7_nbkpj34jbvlxwb98mzj940000gn/T/leetcode/editor/en/[515]Find Largest Value in Each Tree Row.py">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="/var/folders/_j/b7_nbkpj34jbvlxwb98mzj940000gn/T/leetcode/editor/en/doc/content/[515]Find Largest Value in Each Tree Row.md" />
+              <option name="frontendQuestionId" value="leetcode.com515" />
+              <option name="host" value="leetcode.com" />
+              <option name="path" value="/var/folders/_j/b7_nbkpj34jbvlxwb98mzj940000gn/T/leetcode/editor/en/[515]Find Largest Value in Each Tree Row.py" />
+              <option name="titleSlug" value="find-largest-value-in-each-tree-row" />
             </LeetcodeEditor>
           </value>
         </entry>
