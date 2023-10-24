@@ -4,29 +4,41 @@ class ListNode:
         self.next = next
 
 
+class TreeNode(object):
+    def __init__(self, val=0, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
+
+
 class Solution(object):
-    def isPalindrome(self, s):
+    def largestValues(self, root):
         """
-        :type s: str
-        :rtype: bool
+        :type root: TreeNode
+        :rtype: List[int]
         """
-        p1, p2 = 0, len(s) - 1
-        while p1 < p2:
-            p1char = s[p1].lower()
-            p2char = s[p2].lower()
-            if not p1char.isalnum():
-                p1 += 1
-            elif not p2char.isalnum():
-                p2 -= 1
-            elif p1char.isalnum() and p2char.isalnum() and p1char == p2char:
-                p1 += 1
-                p2 -= 1
-            else:
-                return False
-        return True
+        if root is None:
+            return []
+        curr_lvl = [root]
+        res = []
+        temp = []
+        while curr_lvl:
+            mmax = curr_lvl[0].val
+            for node in curr_lvl:
+                mmax = max(node.val, mmax)
+                if node.left:
+                    temp.append(node.left)
+                if node.right:
+                    temp.append(node.right)
+            curr_lvl = temp
+            temp = []
+            res.append(mmax)
+            mmax = None
+        return res
 
 
 ip = ' '
 ip2 = 3
-output = Solution().isPalindrome(ip)
+output = Solution().largestValues(
+    TreeNode(1, TreeNode(2, TreeNode(4), TreeNode(5)), TreeNode(3, TreeNode(6), TreeNode(7))))
 print(output)
