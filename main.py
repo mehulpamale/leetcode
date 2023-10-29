@@ -12,33 +12,15 @@ class TreeNode(object):
 
 
 class Solution(object):
-    def largestValues(self, root):
+    def partition(self, s):
         """
-        :type root: TreeNode
-        :rtype: List[int]
+        :type s: str
+        :rtype: List[List[str]]
         """
-        if root is None:
-            return []
-        curr_lvl = [root]
-        res = []
-        temp = []
-        while curr_lvl:
-            mmax = curr_lvl[0].val
-            for node in curr_lvl:
-                mmax = max(node.val, mmax)
-                if node.left:
-                    temp.append(node.left)
-                if node.right:
-                    temp.append(node.right)
-            curr_lvl = temp
-            temp = []
-            res.append(mmax)
-            mmax = None
-        return res
+        
 
 
-ip = ' '
+ip = 'aaab'
 ip2 = 3
-output = Solution().largestValues(
-    TreeNode(1, TreeNode(2, TreeNode(4), TreeNode(5)), TreeNode(3, TreeNode(6), TreeNode(7))))
+output = Solution().partition(ip)
 print(output)
