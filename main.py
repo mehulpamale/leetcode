@@ -15,27 +15,43 @@ class TreeNode(object):
 
 
 class Solution(object):
-    def sort(self, nums: List):
+
+    def threeSum(self, nums):
         """
         :type nums: List[int]
-        :rtype: List[int]
+        :rtype: List[List[int]]
         """
+        nums.sort()
         length = len(nums)
-        sorted_ptr = 0
-        while sorted_ptr <= length - 1:
-            to_insert = nums.pop(sorted_ptr + 1)
-            for i in range(sorted_ptr - 1, 0, -1):
-                curr = nums[i]
-                m_next = nums[i + 1]
-                if curr >= to_insert >= m_next:
-                    nums.insert(m_next, to_insert)
-                    sorted_ptr += 1
-                    break
+        ans = set()
+        for i in range(length - 2):
+            if i > 0 and nums[i] == nums[i - 1]:
+                continue
+            first = nums[i]
+            j = i + 1
+            k = length - 1
+            while j < k:
+                second = nums[j]
+                third = nums[k]
 
-        return nums
+                m_sum = first + second + third
+
+                if m_sum > 0:
+                    k -= 1
+                elif m_sum < 0:
+                    j += 1
+                else:
+                    ans.add((first, second, third))
+                    j += 1
+                    k -= 1
+                    while j < k and nums[j] == nums[j - 1]:
+                        j += 1
+                    while j < k and nums[k] == nums[k + 1]:
+                        k -= 1
+        return ans
 
 
 ip = [-1, 0, 1, 2, -1, -4]
 ip2 = 3
-output = Solution().sort(ip)
+output = Solution().threeSum(ip)
 print(output)
