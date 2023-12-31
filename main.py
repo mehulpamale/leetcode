@@ -1,3 +1,6 @@
+from typing import List
+
+
 class ListNode:
     def __init__(self, val=0, next=None):
         self.val = val
@@ -12,47 +15,27 @@ class TreeNode(object):
 
 
 class Solution(object):
-    def intToRoman(self, num):
+    def sort(self, nums: List):
         """
-        :type num: int
-        :rtype: str
+        :type nums: List[int]
+        :rtype: List[int]
         """
-        tenxzeros = {
-            0: 'I',
-            1: 'X',
-            2: 'C',
-            3: 'M',
-        }
-        fivexzeros = {
-            0: 'V',
-            1: 'L',
-            2: 'D',
-        }
-        res = ''
-        no_of_zeros = 0
-        while num > 0:
-            divisor = 10
-            rem = num % divisor
-            num //= divisor
-            prefix = ''
-            if rem < 4:
-                prefix = tenxzeros[no_of_zeros] * rem
-            elif rem == 4:
-                prefix = tenxzeros[no_of_zeros] + fivexzeros[no_of_zeros]
-            elif rem == 5:
-                prefix = fivexzeros[no_of_zeros]
-            elif rem < 9:
-                prefix = tenxzeros[no_of_zeros] * rem
-            elif rem == 9:
-                prefix = tenxzeros[no_of_zeros] + fivexzeros[no_of_zeros]
-            res = prefix + res
+        length = len(nums)
+        sorted_ptr = 0
+        while sorted_ptr <= length - 1:
+            to_insert = nums.pop(sorted_ptr + 1)
+            for i in range(sorted_ptr - 1, 0, -1):
+                curr = nums[i]
+                m_next = nums[i + 1]
+                if curr >= to_insert >= m_next:
+                    nums.insert(m_next, to_insert)
+                    sorted_ptr += 1
+                    break
 
-            no_of_zeros += 1
-
-        return res
+        return nums
 
 
-ip = 1451
+ip = [-1, 0, 1, 2, -1, -4]
 ip2 = 3
-output = Solution().intToRoman(ip)
+output = Solution().sort(ip)
 print(output)
