@@ -1,4 +1,4 @@
-from typing import List
+import typing as t
 
 
 class ListNode:
@@ -16,42 +16,55 @@ class TreeNode(object):
 
 class Solution(object):
 
-    def threeSum(self, nums):
+    def isValidSudoku(self, board):
         """
-        :type nums: List[int]
-        :rtype: List[List[int]]
+        :type board: List[List[str]]
+        :rtype: bool
         """
-        nums.sort()
-        length = len(nums)
-        ans = set()
-        for i in range(length - 2):
-            if i > 0 and nums[i] == nums[i - 1]:
-                continue
-            first = nums[i]
-            j = i + 1
-            k = length - 1
-            while j < k:
-                second = nums[j]
-                third = nums[k]
+        m = [[False] * 9 for _ in range(9)]
+        m2 = [[False] * 9 for _ in range(9)]
+        m3 = [[False] * 9 for _ in range(9)]
 
-                m_sum = first + second + third
+        for i in range(9):
+            for j in range(9):
+                if board[i][j] != '.':
+                    num = int(board[i][j]) - 1
+                    k = i // 3 * 3 + j // 3
 
-                if m_sum > 0:
-                    k -= 1
-                elif m_sum < 0:
-                    j += 1
-                else:
-                    ans.add((first, second, third))
-                    j += 1
-                    k -= 1
-                    while j < k and nums[j] == nums[j - 1]:
-                        j += 1
-                    while j < k and nums[k] == nums[k + 1]:
-                        k -= 1
-        return ans
+                    if m[i][num] or m2[j][num] or m3[k][num]:
+                        return False
+
+                    m[i][num] = m2[j][num] = m3[k][num] = True
+
+        return True
 
 
-ip = [-1, 0, 1, 2, -1, -4]
+ip = [["5", "3", ".", ".", "7", ".", ".", ".", "."]
+    , ["6", ".", ".", "1", "9", "5", ".", ".", "."]
+    , [".", "9", "8", ".", ".", ".", ".", "6", "."]
+    , ["8", ".", ".", ".", "6", ".", ".", ".", "3"]
+    , ["4", ".", ".", "8", ".", "3", ".", ".", "1"]
+    , ["7", ".", ".", ".", "2", ".", ".", ".", "6"]
+    , [".", "6", ".", ".", ".", ".", "2", "8", "."]
+    , [".", ".", ".", "4", "1", "9", ".", ".", "5"]
+    , [".", ".", ".", ".", "8", ".", ".", "7", "9"]]
+# ip = [0, 1, 2]
+# ip = [10, 9, 8, 7, 6, 5, 4, 3, 2]
+# ip = [7, 8, 9, 11, 12]
+# ip = [1, 2, 0]
+# ip = [0, 0, 0, 1, 2, 3, 3, 3], 3
+# ip = [2, 2], 2
+# ip = [2], 2
+# ip = [1, 1]
 ip2 = 3
-output = Solution().threeSum(ip)
+output = Solution().isValidSudoku(ip)
 print(output)
+
+# nums = [0, 0, 1, 1, 1, 2, 2, 3, 3, 4]  # Input array
+# expectedNums = [0, 1, 2, 3, 4]  # The expected answer with correct length
+#
+# k = Solution().removeDuplicates(nums)  # Calls your implementation
+#
+# assert k == len(expectedNums)
+# for i in range():
+#     assert nums[i] == expectedNums[i];
