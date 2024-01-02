@@ -443,6 +443,17 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="/var/folders/_j/b7_nbkpj34jbvlxwb98mzj940000gn/T/leetcode/editor/en/[38]Count and Say.py">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="/var/folders/_j/b7_nbkpj34jbvlxwb98mzj940000gn/T/leetcode/editor/en/doc/content/[38]Count and Say.md" />
+              <option name="frontendQuestionId" value="leetcode.com38" />
+              <option name="host" value="leetcode.com" />
+              <option name="path" value="/var/folders/_j/b7_nbkpj34jbvlxwb98mzj940000gn/T/leetcode/editor/en/[38]Count and Say.py" />
+              <option name="titleSlug" value="count-and-say" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="/var/folders/_j/b7_nbkpj34jbvlxwb98mzj940000gn/T/leetcode/editor/en/[392]Is Subsequence.py">
           <value>
             <LeetcodeEditor>
@@ -495,6 +506,17 @@
               <option name="host" value="leetcode.com" />
               <option name="path" value="/var/folders/_j/b7_nbkpj34jbvlxwb98mzj940000gn/T/leetcode/editor/en/[450]Delete Node in a BST.py" />
               <option name="titleSlug" value="delete-node-in-a-bst" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="/var/folders/_j/b7_nbkpj34jbvlxwb98mzj940000gn/T/leetcode/editor/en/[50]Pow(x, n).py">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="/var/folders/_j/b7_nbkpj34jbvlxwb98mzj940000gn/T/leetcode/editor/en/doc/content/[50]Pow(x, n).md" />
+              <option name="frontendQuestionId" value="leetcode.com50" />
+              <option name="host" value="leetcode.com" />
+              <option name="path" value="/var/folders/_j/b7_nbkpj34jbvlxwb98mzj940000gn/T/leetcode/editor/en/[50]Pow(x, n).py" />
+              <option name="titleSlug" value="powx-n" />
             </LeetcodeEditor>
           </value>
         </entry>

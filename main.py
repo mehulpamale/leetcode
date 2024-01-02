@@ -1,4 +1,5 @@
 import typing as t
+from collections import defaultdict
 
 
 class ListNode:
@@ -16,30 +17,15 @@ class TreeNode(object):
 
 class Solution(object):
 
-    def isValidSudoku(self, board):
+    def myPow(self, x, n):
         """
-        :type board: List[List[str]]
-        :rtype: bool
+        :type x: float
+        :type n: int
+        :rtype: float
         """
-        m = [[False] * 9 for _ in range(9)]
-        m2 = [[False] * 9 for _ in range(9)]
-        m3 = [[False] * 9 for _ in range(9)]
-
-        for i in range(9):
-            for j in range(9):
-                if board[i][j] != '.':
-                    num = int(board[i][j]) - 1
-                    k = i // 3 * 3 + j // 3
-
-                    if m[i][num] or m2[j][num] or m3[k][num]:
-                        return False
-
-                    m[i][num] = m2[j][num] = m3[k][num] = True
-
-        return True
 
 
-ip = [["5", "3", ".", ".", "7", ".", ".", ".", "."]
+ip = [["8", "3", ".", ".", "7", ".", ".", ".", "."]
     , ["6", ".", ".", "1", "9", "5", ".", ".", "."]
     , [".", "9", "8", ".", ".", ".", ".", "6", "."]
     , ["8", ".", ".", ".", "6", ".", ".", ".", "3"]
@@ -66,5 +52,5 @@ print(output)
 # k = Solution().removeDuplicates(nums)  # Calls your implementation
 #
 # assert k == len(expectedNums)
-# for i in range():
-#     assert nums[i] == expectedNums[i];
+# for colIndex in range():
+#     assert nums[colIndex] == expectedNums[colIndex];
