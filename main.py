@@ -17,28 +17,30 @@ class TreeNode(object):
 
 class Solution(object):
 
-    def myPow(self, x, n):
+    def maxArea(self, height):
         """
-        :type x: float
-        :type n: int
-        :rtype: float
+        :type height: List[int]
+        :rtype: int
         """
+        min_pointer = 0
+        max_pointer = len(height) - 1
+        max_area = 0
+        while min_pointer < max_pointer:
+            distance = max_pointer - min_pointer
+            
+            min_height = min(height[min_pointer], height[max_pointer])
+            current_area = min_height * distance
+            max_area = max(current_area, max_area)
 
-        def helper(x, n):
-            if x == 0:
-                return 0
-            if n == 0:
-                return 1
+            if min_pointer > max_pointer:
+                max_pointer += 1
+            else:
+                min_pointer += 1
+        return max_area
 
-            xs = x * x
-            res = helper(xs, n // 2)
-            return res * x if n % 2 else res
-
-        r = helper(x, abs(n))
-        return r if n >= 0 else 1 / r
-
-
-ip = 2, 10
+# ip = 2, 10
+# ip = [1, 8, 6, 2, 5, 4, 8, 3, 7]
+ip = [2, 3, 4, 5, 18, 17, 6]
 # ip = 2.00000, 10
 # ip = 2, 4
 # ip = [0, 1, 2]
@@ -50,7 +52,7 @@ ip = 2, 10
 # ip = [2], 2
 # ip = [1, 1]
 ip2 = 3
-output = Solution().myPow(*ip)
+output = Solution().maxArea(ip)
 print(output)
 
 # nums = [0, 0, 1, 1, 1, 2, 2, 3, 3, 4]  # Input array
