@@ -17,30 +17,41 @@ class TreeNode(object):
 
 class Solution(object):
 
-    def maxArea(self, height):
+    def letterCombinations(self, digits):
         """
-        :type height: List[int]
-        :rtype: int
+        :type digits: str
+        :rtype: List[str]
         """
-        min_pointer = 0
-        max_pointer = len(height) - 1
-        max_area = 0
-        while min_pointer < max_pointer:
-            distance = max_pointer - min_pointer
-            
-            min_height = min(height[min_pointer], height[max_pointer])
-            current_area = min_height * distance
-            max_area = max(current_area, max_area)
+        if not digits:
+            return []
+        mmap = {
+            '2': 'abc',
+            '3': 'def',
+            '4': 'ghi',
+            '5': 'jkl',
+            '6': 'mno',
+            '7': 'pqrs',
+            '8': 'tuv',
+            '9': 'wxyz',
+        }
 
-            if min_pointer > max_pointer:
-                max_pointer += 1
-            else:
-                min_pointer += 1
-        return max_area
+        combinations = []
+
+        def backtrack(combination, digits):
+            if len(digits) == 0:
+                combinations.append(combination)
+                return
+
+            for letter in mmap[digits[0]]:
+                backtrack(combination + letter, digits[1:])
+
+        backtrack("", digits)
+        return combinations
+
 
 # ip = 2, 10
 # ip = [1, 8, 6, 2, 5, 4, 8, 3, 7]
-ip = [2, 3, 4, 5, 18, 17, 6]
+ip = "23"
 # ip = 2.00000, 10
 # ip = 2, 4
 # ip = [0, 1, 2]
@@ -52,7 +63,7 @@ ip = [2, 3, 4, 5, 18, 17, 6]
 # ip = [2], 2
 # ip = [1, 1]
 ip2 = 3
-output = Solution().maxArea(ip)
+output = Solution().letterCombinations(ip)
 print(output)
 
 # nums = [0, 0, 1, 1, 1, 2, 2, 3, 3, 4]  # Input array
