@@ -16,42 +16,46 @@ class TreeNode(object):
 
 
 class Solution(object):
-
-    def letterCombinations(self, digits):
+    def removeElement(self, nums, val):
         """
-        :type digits: str
-        :rtype: List[str]
+        :type nums: List[int]
+        :type val: int
+        :rtype: int
         """
-        if not digits:
-            return []
-        mmap = {
-            '2': 'abc',
-            '3': 'def',
-            '4': 'ghi',
-            '5': 'jkl',
-            '6': 'mno',
-            '7': 'pqrs',
-            '8': 'tuv',
-            '9': 'wxyz',
-        }
+        if not nums:
+            return 0
 
-        combinations = []
+        length = len(nums)
+        if length == 1:
+            if nums[0] == val:
+                nums.pop()
+                return 0
+            else:
+                return 1
 
-        def backtrack(combination, digits):
-            if len(digits) == 0:
-                combinations.append(combination)
-                return
-
-            for letter in mmap[digits[0]]:
-                backtrack(combination + letter, digits[1:])
-
-        backtrack("", digits)
-        return combinations
+        p1, p2 = 0, length - 1
+        k = 0
+        while p1 <= p2:
+            if nums[p2] == val:
+                p2 -= 1
+            else:
+                nums[p1], nums[p2] = nums[p2], nums[p1]
+                p1 += 1
+                k += 1
+        return k
 
 
 # ip = 2, 10
-# ip = [1, 8, 6, 2, 5, 4, 8, 3, 7]
-ip = "23"
+# ip = [1, 3, 2, 1, 3, 5], 3
+ip = [1], 1
+ip = [2], 3
+# ip = [4, 2, 0, 2, 2, 1, 4, 4, 1, 4, 3, 2], 2
+# ip = [1, 3, 2, 1, 3, 5], 1
+# ip = [3, 2, 2, 3], 3
+# ip = [1, 2, 5, 6], 5
+# ip = [1, 3, 5], 4
+# ip = [1, 3, 5], 2
+# ip = "23"
 # ip = 2.00000, 10
 # ip = 2, 4
 # ip = [0, 1, 2]
@@ -63,7 +67,8 @@ ip = "23"
 # ip = [2], 2
 # ip = [1, 1]
 ip2 = 3
-output = Solution().letterCombinations(ip)
+output = Solution().removeElement(*ip)
+print(ip[0])
 print(output)
 
 # nums = [0, 0, 1, 1, 1, 2, 2, 3, 3, 4]  # Input array
