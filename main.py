@@ -23,18 +23,25 @@ class Solution(object):
         :rtype: List[List[int]]
         """
         ans = set()
-        for i_first, first in enumerate(nums):
-            for i_second, second in enumerate(nums):
-                if i_first == i_second:
-                    continue
-                for i_third, third in enumerate(nums):
-                    if i_second == i_third or i_first == i_third:
-                        continue
-                    for i_fourth, fourth in enumerate(nums):
-                        if i_third == i_fourth or i_third == i_second or i_third == i_first:
-                            continue
-                        if (first + second + third + fourth) == target:
-                            ans.add(tuple(sorted([first, second, third, fourth])))
+        length = len(nums)
+        if length < 4:
+            return []
+
+        nums.sort()
+        for first in range(length - 3):
+            for second in range(first + 1, length - 2):
+                third = second + 1
+                fourth = length - 1
+                while third < fourth:
+                    msum = nums[first] + nums[second] + nums[third] + nums[fourth]
+                    if msum > target:
+                        fourth -= 1
+                    elif msum < target:
+                        third += 1
+                    else:
+                        ans.add((nums[first], nums[second], nums[third], nums[fourth]))
+                        third += 1
+                        fourth -= 1
         return ans
 
 
@@ -42,6 +49,8 @@ class Solution(object):
 # ip = [1, 3, 2, 1, 3, 5], 3
 # ip = [1, 0, -1, 0, -2, 2], 0
 ip = [1, 0, -1, 0, -2, 2], 0
+# ip = [2, 2, 2, 2, 2], 8
+ip = [0, 0, 0, 0], 0
 
 # ip = [1], 1
 # ip = [2], 3
