@@ -16,39 +16,35 @@ class TreeNode(object):
 
 
 class Solution(object):
-    def removeElement(self, nums, val):
+    def fourSum(self, nums, target):
         """
         :type nums: List[int]
-        :type val: int
-        :rtype: int
+        :type target: int
+        :rtype: List[List[int]]
         """
-        if not nums:
-            return 0
-
-        length = len(nums)
-        if length == 1:
-            if nums[0] == val:
-                nums.pop()
-                return 0
-            else:
-                return 1
-
-        p1, p2 = 0, length - 1
-        k = 0
-        while p1 <= p2:
-            if nums[p2] == val:
-                p2 -= 1
-            else:
-                nums[p1], nums[p2] = nums[p2], nums[p1]
-                p1 += 1
-                k += 1
-        return k
+        ans = set()
+        for i_first, first in enumerate(nums):
+            for i_second, second in enumerate(nums):
+                if i_first == i_second:
+                    continue
+                for i_third, third in enumerate(nums):
+                    if i_second == i_third or i_first == i_third:
+                        continue
+                    for i_fourth, fourth in enumerate(nums):
+                        if i_third == i_fourth or i_third == i_second or i_third == i_first:
+                            continue
+                        if (first + second + third + fourth) == target:
+                            ans.add(tuple(sorted([first, second, third, fourth])))
+        return ans
 
 
 # ip = 2, 10
 # ip = [1, 3, 2, 1, 3, 5], 3
-ip = [1], 1
-ip = [2], 3
+# ip = [1, 0, -1, 0, -2, 2], 0
+ip = [1, 0, -1, 0, -2, 2], 0
+
+# ip = [1], 1
+# ip = [2], 3
 # ip = [4, 2, 0, 2, 2, 1, 4, 4, 1, 4, 3, 2], 2
 # ip = [1, 3, 2, 1, 3, 5], 1
 # ip = [3, 2, 2, 3], 3
@@ -67,7 +63,7 @@ ip = [2], 3
 # ip = [2], 2
 # ip = [1, 1]
 ip2 = 3
-output = Solution().removeElement(*ip)
+output = Solution().fourSum(*ip)
 print(ip[0])
 print(output)
 
