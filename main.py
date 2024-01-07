@@ -16,36 +16,33 @@ class TreeNode(object):
 
 
 class Solution(object):
-    def longestValidParentheses(self, s):
+    def findSubstring(self, s, words):
         """
         :type s: str
-        :rtype: int
+        :type words: List[str]
+        :rtype: List[int]
         """
-        stack = []
-        arr = [False for _ in range(len(s))]
 
-        for i, val in enumerate(s):
-            if val == ')':
-                if stack:
-                    stack.pop()
-                    arr[i] = True
-            else:
-                stack.append((i, '('))
-                arr[i] = True
+        combinations = set()
 
-        for i in stack:
-            arr[i[0]] = False
+        def combine(res, lst):
+            if not lst:
+                combinations.add(res)
+                return
 
-        curr = 0
-        max_len = 0
-        for val in arr:
-            if val:
-                curr += 1
-            else:
-                curr = 0
-            max_len = max(max_len, curr)
+            for i in range(len(lst)):
+                combine(res + lst[i], lst[:i] + lst[i + 1:])
 
-        return max_len
+        combine('', words)
+        length = len(words) * len(words[0])
+
+        ans = []
+
+        for i in range(len(s) - length + 1):
+            if s[i: i + length] in combinations:
+                ans.append(i)
+
+        return ans
 
 
 # ip = 2, 10
@@ -57,7 +54,8 @@ class Solution(object):
 # ip = "ab", ".*"
 # ip = "aab", "c*a*b"
 # ip = "aaaaaaaaaaaaaaaaaaab", "ab"
-ip = ")()()(()()("
+ip = 'madhatsadbadhad', ['sad', 'bad', 'hat']
+ip = 'pjzkrkevzztxductzzxmxsvwjkxpvukmfjywwetvfnujhweiybwvvsrfequzkhossmootkmyxgjgfordrpapjuunmqnxxdrqrfgkrsjqbszgiqlcfnrpjlcwdrvbumtotzylshdvccdmsqoadfrpsvnwpizlwszrtyclhgilklydbmfhuywotjmktnwrfvizvnmfvvqfiokkdprznnnjycttprkxpuykhmpchiksyucbmtabiqkisgbhxngmhezrrqvayfsxauampdpxtafniiwfvdufhtwajrbkxtjzqjnfocdhekumttuqwovfjrgulhekcpjszyynadxhnttgmnxkduqmmyhzfnjhducesctufqbumxbamalqudeibljgbspeotkgvddcwgxidaiqcvgwykhbysjzlzfbupkqunuqtraxrlptivshhbihtsigtpipguhbhctcvubnhqipncyxfjebdnjyetnlnvmuxhzsdahkrscewabejifmxombiamxvauuitoltyymsarqcuuoezcbqpdaprxmsrickwpgwpsoplhugbikbkotzrtqkscekkgwjycfnvwfgdzogjzjvpcvixnsqsxacfwndzvrwrycwxrcismdhqapoojegggkocyrdtkzmiekhxoppctytvphjynrhtcvxcobxbcjjivtfjiwmduhzjokkbctweqtigwfhzorjlkpuuliaipbtfldinyetoybvugevwvhhhweejogrghllsouipabfafcxnhukcbtmxzshoyyufjhzadhrelweszbfgwpkzlwxkogyogutscvuhcllphshivnoteztpxsaoaacgxyaztuixhunrowzljqfqrahosheukhahhbiaxqzfmmwcjxountkevsvpbzjnilwpoermxrtlfroqoclexxisrdhvfsindffslyekrzwzqkpeocilatftymodgztjgybtyheqgcpwogdcjlnlesefgvimwbxcbzvaibspdjnrpqtyeilkcspknyylbwndvkffmzuriilxagyerjptbgeqgebiaqnvdubrtxibhvakcyotkfonmseszhczapxdlauexehhaireihxsplgdgmxfvaevrbadbwjbdrkfbbjjkgcztkcbwagtcnrtqryuqixtzhaakjlurnumzyovawrcjiwabuwretmdamfkxrgqgcdgbrdbnugzecbgyxxdqmisaqcyjkqrntxqmdrczxbebemcblftxplafnyoxqimkhcykwamvdsxjezkpgdpvopddptdfbprjustquhlazkjfluxrzopqdstulybnqvyknrchbphcarknnhhovweaqawdyxsqsqahkepluypwrzjegqtdoxfgzdkydeoxvrfhxusrujnmjzqrrlxglcmkiykldbiasnhrjbjekystzilrwkzhontwmehrfsrzfaqrbbxncphbzuuxeteshyrveamjsfiaharkcqxefghgceeixkdgkuboupxnwhnfigpkwnqdvzlydpidcljmflbccarbiegsmweklwngvygbqpescpeichmfidgsjmkvkofvkuehsmkkbocgejoiqcnafvuokelwuqsgkyoekaroptuvekfvmtxtqshcwsztkrzwrpabqrrhnlerxjojemcxel', ["dhvf","sind","ffsl","yekr","zwzq","kpeo","cila","tfty","modg","ztjg","ybty","heqg","cpwo","gdcj","lnle","sefg","vimw","bxcb"]
 # ip = [2, 2, 2, 2, 2], 8
 # ip = [0, 0, 0, 0], 0
 
@@ -81,7 +79,7 @@ ip = ")()()(()()("
 # ip = [2], 2
 # ip = [1, 1]
 ip2 = 3
-output = Solution().longestValidParentheses(ip)
+output = Solution().findSubstring(*ip)
 print(ip[0])
 print(output)
 
