@@ -16,17 +16,36 @@ class TreeNode(object):
 
 
 class Solution(object):
-    def strStr(self, haystack, needle):
+    def longestValidParentheses(self, s):
         """
-        :type haystack: str
-        :type needle: str
+        :type s: str
         :rtype: int
         """
+        stack = []
+        arr = [False for _ in range(len(s))]
 
-        for i in range(len(haystack) - len(needle) + 1):
-            if haystack[i: i + len(needle)] == needle:
-                return i
-        return -1
+        for i, val in enumerate(s):
+            if val == ')':
+                if stack:
+                    stack.pop()
+                    arr[i] = True
+            else:
+                stack.append((i, '('))
+                arr[i] = True
+
+        for i in stack:
+            arr[i[0]] = False
+
+        curr = 0
+        max_len = 0
+        for val in arr:
+            if val:
+                curr += 1
+            else:
+                curr = 0
+            max_len = max(max_len, curr)
+
+        return max_len
 
 
 # ip = 2, 10
@@ -38,7 +57,7 @@ class Solution(object):
 # ip = "ab", ".*"
 # ip = "aab", "c*a*b"
 # ip = "aaaaaaaaaaaaaaaaaaab", "ab"
-ip = "sad but nosad", "nosad"
+ip = ")()()(()()("
 # ip = [2, 2, 2, 2, 2], 8
 # ip = [0, 0, 0, 0], 0
 
@@ -62,7 +81,7 @@ ip = "sad but nosad", "nosad"
 # ip = [2], 2
 # ip = [1, 1]
 ip2 = 3
-output = Solution().strStr(*ip)
+output = Solution().longestValidParentheses(ip)
 print(ip[0])
 print(output)
 

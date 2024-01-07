@@ -443,6 +443,17 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="/var/folders/_j/b7_nbkpj34jbvlxwb98mzj940000gn/T/leetcode/editor/en/[31]Next Permutation.py">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="/var/folders/_j/b7_nbkpj34jbvlxwb98mzj940000gn/T/leetcode/editor/en/doc/content/[31]Next Permutation.md" />
+              <option name="frontendQuestionId" value="leetcode.com31" />
+              <option name="host" value="leetcode.com" />
+              <option name="path" value="/var/folders/_j/b7_nbkpj34jbvlxwb98mzj940000gn/T/leetcode/editor/en/[31]Next Permutation.py" />
+              <option name="titleSlug" value="next-permutation" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="/var/folders/_j/b7_nbkpj34jbvlxwb98mzj940000gn/T/leetcode/editor/en/[328]Odd Even Linked List.py">
           <value>
             <LeetcodeEditor>
@@ -451,6 +462,17 @@
               <option name="host" value="leetcode.com" />
               <option name="path" value="/var/folders/_j/b7_nbkpj34jbvlxwb98mzj940000gn/T/leetcode/editor/en/[328]Odd Even Linked List.py" />
               <option name="titleSlug" value="odd-even-linked-list" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="/var/folders/_j/b7_nbkpj34jbvlxwb98mzj940000gn/T/leetcode/editor/en/[32]Longest Valid Parentheses.py">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="/var/folders/_j/b7_nbkpj34jbvlxwb98mzj940000gn/T/leetcode/editor/en/doc/content/[32]Longest Valid Parentheses.md" />
+              <option name="frontendQuestionId" value="leetcode.com32" />
+              <option name="host" value="leetcode.com" />
+              <option name="path" value="/var/folders/_j/b7_nbkpj34jbvlxwb98mzj940000gn/T/leetcode/editor/en/[32]Longest Valid Parentheses.py" />
+              <option name="titleSlug" value="longest-valid-parentheses" />
             </LeetcodeEditor>
           </value>
         </entry>
