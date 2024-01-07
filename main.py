@@ -16,43 +16,17 @@ class TreeNode(object):
 
 
 class Solution(object):
-    def isMatch(self, s, p):
+    def strStr(self, haystack, needle):
         """
-        :type s: str
-        :type p: str
-        :rtype: bool
+        :type haystack: str
+        :type needle: str
+        :rtype: int
         """
-        cache = {}
 
-        def dfs(sptr, pptr):
-            if (sptr, pptr) in cache:
-                return cache[sptr, pptr]
-
-            if sptr >= len(s) and pptr >= len(p):
-                return True
-            if pptr >= len(p):
-                return False
-
-            single_match = sptr < len(s) and (s[sptr] == p[pptr] or p[pptr] == '.')
-            if (pptr + 1) < len(p) and p[pptr + 1] == '*':
-                if dfs(sptr, pptr + 2):
-                    cache[sptr, pptr + 2] = True
-                    return True
-                else:
-                    if single_match:
-                        res = dfs(sptr + 1, pptr)
-                        cache[(sptr + 1, pptr)] = res
-                        return res
-
-            if single_match:
-                res = dfs(sptr + 1, pptr + 1)
-                cache[(sptr + 1, pptr + 1)] = res
-                return res
-
-            cache[(sptr, pptr)] = False
-            return False
-
-        return dfs(0, 0)
+        for i in range(len(haystack) - len(needle) + 1):
+            if haystack[i: i + len(needle)] == needle:
+                return i
+        return -1
 
 
 # ip = 2, 10
@@ -63,7 +37,8 @@ class Solution(object):
 # ip = "a", "a"
 # ip = "ab", ".*"
 # ip = "aab", "c*a*b"
-ip = "aaaaaaaaaaaaaaaaaaab", "a*a*a*a*a*a*a*a*a*a*"
+# ip = "aaaaaaaaaaaaaaaaaaab", "ab"
+ip = "sad but nosad", "nosad"
 # ip = [2, 2, 2, 2, 2], 8
 # ip = [0, 0, 0, 0], 0
 
@@ -87,7 +62,7 @@ ip = "aaaaaaaaaaaaaaaaaaab", "a*a*a*a*a*a*a*a*a*a*"
 # ip = [2], 2
 # ip = [1, 1]
 ip2 = 3
-output = Solution().isMatch(*ip)
+output = Solution().strStr(*ip)
 print(ip[0])
 print(output)
 
