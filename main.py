@@ -16,41 +16,56 @@ class TreeNode(object):
 
 
 class Solution(object):
-    def fourSum(self, nums, target):
+    def isMatch(self, s, p):
         """
-        :type nums: List[int]
-        :type target: int
-        :rtype: List[List[int]]
+        :type s: str
+        :type p: str
+        :rtype: bool
         """
-        ans = set()
-        length = len(nums)
-        if length < 4:
-            return []
+        cache = {}
 
-        nums.sort()
-        for first in range(length - 3):
-            for second in range(first + 1, length - 2):
-                third = second + 1
-                fourth = length - 1
-                while third < fourth:
-                    msum = nums[first] + nums[second] + nums[third] + nums[fourth]
-                    if msum > target:
-                        fourth -= 1
-                    elif msum < target:
-                        third += 1
-                    else:
-                        ans.add((nums[first], nums[second], nums[third], nums[fourth]))
-                        third += 1
-                        fourth -= 1
-        return ans
+        def dfs(sptr, pptr):
+            if (sptr, pptr) in cache:
+                return cache[sptr, pptr]
+
+            if sptr >= len(s) and pptr >= len(p):
+                return True
+            if pptr >= len(p):
+                return False
+
+            single_match = sptr < len(s) and (s[sptr] == p[pptr] or p[pptr] == '.')
+            if (pptr + 1) < len(p) and p[pptr + 1] == '*':
+                if dfs(sptr, pptr + 2):
+                    cache[sptr, pptr + 2] = True
+                    return True
+                else:
+                    if single_match:
+                        res = dfs(sptr + 1, pptr)
+                        cache[(sptr + 1, pptr)] = res
+                        return res
+
+            if single_match:
+                res = dfs(sptr + 1, pptr + 1)
+                cache[(sptr + 1, pptr + 1)] = res
+                return res
+
+            cache[(sptr, pptr)] = False
+            return False
+
+        return dfs(0, 0)
 
 
 # ip = 2, 10
 # ip = [1, 3, 2, 1, 3, 5], 3
 # ip = [1, 0, -1, 0, -2, 2], 0
-ip = [1, 0, -1, 0, -2, 2], 0
+# ip = "aa", "a"
+# ip = "aa", "a*"
+# ip = "a", "a"
+# ip = "ab", ".*"
+# ip = "aab", "c*a*b"
+ip = "aaaaaaaaaaaaaaaaaaab", "a*a*a*a*a*a*a*a*a*a*"
 # ip = [2, 2, 2, 2, 2], 8
-ip = [0, 0, 0, 0], 0
+# ip = [0, 0, 0, 0], 0
 
 # ip = [1], 1
 # ip = [2], 3
@@ -72,7 +87,7 @@ ip = [0, 0, 0, 0], 0
 # ip = [2], 2
 # ip = [1, 1]
 ip2 = 3
-output = Solution().fourSum(*ip)
+output = Solution().isMatch(*ip)
 print(ip[0])
 print(output)
 
