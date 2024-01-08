@@ -22,26 +22,33 @@ class Solution(object):
         :type words: List[str]
         :rtype: List[int]
         """
-
         total_word_count = len(words)
-        length = len(words[0]) * total_word_count
+        word_length = len(words[0])
+        length = word_length * total_word_count
         res = []
+
+        original_counter = {}
+        for i in words:
+            if i in original_counter:
+                original_counter[i] += 1
+            else:
+                original_counter[i] = 1
+
         for i in range(len(s) - length + 1):
             curr = s[i: i + length]
             curr_words = [''] * total_word_count
-            curr_word_counter = [0] * total_word_count
 
             for index, val in enumerate(curr):
-                curr_words[(index // total_word_count)] += val
+                curr_words[(index // word_length)] += val
+
+            curr_word_counter = {k: 0 for k in curr_words}
 
             for index in range(total_word_count):
                 if curr_words[index] in words:
-                    curr_word_counter[index] += 1
-                    if curr_word_counter[index] > 1:
-                        break
+                    curr_word_counter[curr_words[index]] += 1
 
-            for wc in range(total_word_count):
-                if curr_word_counter[wc] != 1:
+            for k, value in original_counter.items():
+                if k not in curr_word_counter or value != curr_word_counter[k]:
                     break
             else:
                 res.append(i)
@@ -58,7 +65,10 @@ class Solution(object):
 # ip = "ab", ".*"
 # ip = "aab", "c*a*b"
 # ip = "aaaaaaaaaaaaaaaaaaab", "ab"
-ip = 'madhatsadbadhad', ['sad', 'bad', 'hat']
+# ip = 'madhatsadbadhad', ['sad', 'bad', 'hat']
+# ip = "barfoothefoobarman", ["foo", "bar"]
+# ip = "wordgoodgoodgoodbestword", ["word", "good", "best", "word"]
+ip = "wordgoodgoodgoodbestword", ["word", "good", "best", "good"]
 # ip = 'pjzkrkevzztxductzzxmxsvwjkxpvukmfjywwetvfnujhweiybwvvsrfequzkhossmootkmyxgjgfordrpapjuunmqnxxdrqrfgkrsjqbszgiqlcfnrpjlcwdrvbumtotzylshdvccdmsqoadfrpsvnwpizlwszrtyclhgilklydbmfhuywotjmktnwrfvizvnmfvvqfiokkdprznnnjycttprkxpuykhmpchiksyucbmtabiqkisgbhxngmhezrrqvayfsxauampdpxtafniiwfvdufhtwajrbkxtjzqjnfocdhekumttuqwovfjrgulhekcpjszyynadxhnttgmnxkduqmmyhzfnjhducesctufqbumxbamalqudeibljgbspeotkgvddcwgxidaiqcvgwykhbysjzlzfbupkqunuqtraxrlptivshhbihtsigtpipguhbhctcvubnhqipncyxfjebdnjyetnlnvmuxhzsdahkrscewabejifmxombiamxvauuitoltyymsarqcuuoezcbqpdaprxmsrickwpgwpsoplhugbikbkotzrtqkscekkgwjycfnvwfgdzogjzjvpcvixnsqsxacfwndzvrwrycwxrcismdhqapoojegggkocyrdtkzmiekhxoppctytvphjynrhtcvxcobxbcjjivtfjiwmduhzjokkbctweqtigwfhzorjlkpuuliaipbtfldinyetoybvugevwvhhhweejogrghllsouipabfafcxnhukcbtmxzshoyyufjhzadhrelweszbfgwpkzlwxkogyogutscvuhcllphshivnoteztpxsaoaacgxyaztuixhunrowzljqfqrahosheukhahhbiaxqzfmmwcjxountkevsvpbzjnilwpoermxrtlfroqoclexxisrdhvfsindffslyekrzwzqkpeocilatftymodgztjgybtyheqgcpwogdcjlnlesefgvimwbxcbzvaibspdjnrpqtyeilkcspknyylbwndvkffmzuriilxagyerjptbgeqgebiaqnvdubrtxibhvakcyotkfonmseszhczapxdlauexehhaireihxsplgdgmxfvaevrbadbwjbdrkfbbjjkgcztkcbwagtcnrtqryuqixtzhaakjlurnumzyovawrcjiwabuwretmdamfkxrgqgcdgbrdbnugzecbgyxxdqmisaqcyjkqrntxqmdrczxbebemcblftxplafnyoxqimkhcykwamvdsxjezkpgdpvopddptdfbprjustquhlazkjfluxrzopqdstulybnqvyknrchbphcarknnhhovweaqawdyxsqsqahkepluypwrzjegqtdoxfgzdkydeoxvrfhxusrujnmjzqrrlxglcmkiykldbiasnhrjbjekystzilrwkzhontwmehrfsrzfaqrbbxncphbzuuxeteshyrveamjsfiaharkcqxefghgceeixkdgkuboupxnwhnfigpkwnqdvzlydpidcljmflbccarbiegsmweklwngvygbqpescpeichmfidgsjmkvkofvkuehsmkkbocgejoiqcnafvuokelwuqsgkyoekaroptuvekfvmtxtqshcwsztkrzwrpabqrrhnlerxjojemcxel', [
 #     "dhvf", "sind", "ffsl", "yekr", "zwzq", "kpeo", "cila", "tfty", "modg", "ztjg", "ybty", "heqg", "cpwo", "gdcj",
 #     "lnle", "sefg", "vimw", "bxcb"]
