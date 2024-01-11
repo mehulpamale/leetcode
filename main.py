@@ -17,43 +17,48 @@ class TreeNode(object):
 
 class Solution(object):
 
-    def nextPermutation(self, nums):
+    def mySqrt(self, x):
         """
-        :type nums: List[int]
-        :rtype: None Do not return anything, modify nums in-place instead.
+        :type x: int
+        :rtype: int
         """
 
-        def swap(a, b):
-            nums[a], nums[b] = nums[b], nums[a]
+        if x == 0:
+            return 0
+        if x == 1 or x == 2 or x == 3:
+            return 1
 
-        length = len(nums)
+        i = 2
+        while i * i * i * i <= x:
+            i *= i
 
-        if length == 1:
-            return
+        upper, lower = i * i * i * i, i
 
-        if length == 2:
-            swap(0, 1)
-            return
+        final = None
+        while lower < upper:
+            mid = (lower + upper) // 2
+            ans = mid * mid
 
-        p2 = length - 1
-        while p2 >= 0:
-            p1 = p2 - 1
+            if ans < x:
+                if (mid + 1) * (mid + 1) > x:
+                    final = mid
+                    break
 
-            if p2 == 0:
-                nums.sort()
-                return
+                lower = mid + 1
+            elif ans > x:
+                if (mid - 1) * (mid - 1) < x:
+                    final = mid - 1
+                    break
 
-            if nums[p1] < nums[p2]:
-                next_minimum = p2
-                for i in range(p2, length):
-                    if nums[p1] < nums[i] < nums[next_minimum]:
-                        next_minimum = i
-                swap(p1, next_minimum)
-                msorted = sorted(nums[p2: length])
-                for i in range(len(msorted)):
-                    nums[p2 + i] = msorted[i]
-                return
-            p2 -= 1
+                upper = mid - 1
+            elif ans == x:
+                final = mid
+                break
+
+        if lower == upper:
+            final = lower
+
+        return final if final < 2 ** 31 - 1 else 2 ** 31 - 1
 
 
 # ip = [2, 10]
@@ -71,7 +76,7 @@ class Solution(object):
 # ip = "wordgoodgoodgoodbestword", ["word", "good", "best", "word"]
 # ip = "wordgoodgoodgoodbestword", ["word", "good", "best", "good"]
 # [6, 5, 4, 3, 2, 1]
-ip = [1, 5, 4, 3, 2]
+ip = 3
 # ip = [1, 4, 5, 3, 2]
 # ip = [1, 3, 5, 2, 4]
 # ip = [1, 5, 3, 4, 2]
@@ -101,7 +106,7 @@ ip = [1, 5, 4, 3, 2]
 # ip = [2], 2
 # ip = [1, 1]
 ip2 = 3
-output = Solution().nextPermutation(ip)
+output = Solution().mySqrt(ip)
 print(ip)
 print(output)
 
