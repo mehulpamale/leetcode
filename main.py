@@ -22,36 +22,14 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
-        mmin, mmax = 10 ** 9, -10 ** 9
-        mset = set()
-        for num in nums:
-            mmin = min(num, mmin)
-            mmax = max(num, mmax)
-            mset.add(num)
+        mset = set(nums)
 
-        counter = 0
         max_len = 0
-        last = None
-        for num in range(mmin, mmax + 1):
-            if num not in mset:
-                continue
-
-            if last is None:
-                last = num
-                counter = 1
-                continue
-            elif last + 1 != num:
-                max_len = max(max_len, counter)
-                last = num
-                counter = 1
-                continue
-            else:
+        for i in mset:
+            counter = 1
+            while i + counter in mset:
                 counter += 1
-
-            last = num
-
-        max_len = max(max_len, counter)
-
+            max_len = max(counter, max_len)
         return max_len
 
 
